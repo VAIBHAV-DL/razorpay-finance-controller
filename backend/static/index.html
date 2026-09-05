@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Razorpay Test Payment</title>
+</head>
+<body>
+
+<h2>Razorpay Test Payment</h2>
+
+<button id="pay-btn">Pay ₹100</button>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+document.getElementById("pay-btn").onclick = function () {
+
+    const options = {
+        key: "YOUR_TEST_KEY_ID",
+        amount: 10000,
+        currency: "INR",
+        name: "Finance Controller",
+        description: "Test Transaction",
+        order_id: "order_TUk0Lv4qs8EtFO",
+
+        handler: function (response) {
+            console.log(response);
+
+            alert(
+                "Payment ID: " + response.razorpay_payment_id
+            );
+        }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+};
+</script>
+
+</body>
+</html>
